@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "aegis"
 version = "0.1.0"
@@ -9,19 +5,19 @@ description = "Autonomous Evaluation & Guardrail Intelligence System"
 requires-python = ">=3.10"
 dependencies = [
     "pydantic>=2.7,<3",
+    "httpx>=0.27.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8",
     "pytest-cov",
+    "pytest-asyncio>=0.23.0",
     "ruff",
 ]
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
 addopts = "-q"
+asyncio_mode = "auto"
