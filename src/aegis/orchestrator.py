@@ -2,7 +2,7 @@ from aegis.generators import BaseGenerator
 from aegis.targets import BaseTarget
 from aegis.evaluators import BaseEvaluator
 from aegis.scoring import BaseScorer
-from aegis.schemas import IterationResult
+from aegis.schemas import IterationResult, TestCase
 
 
 class Orchestrator:
@@ -20,6 +20,9 @@ class Orchestrator:
 
     async def run_single_iteration(self) -> IterationResult:
         test_case = await self.generator.generate()
+        return await self.run_test_case(test_case)
+
+    async def run_test_case(self, test_case: TestCase) -> IterationResult:
         response = await self.target.execute(test_case)
         evaluation = await self.evaluator.evaluate(test_case, response)
         score = await self.scorer.score(evaluation)
