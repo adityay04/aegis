@@ -10,6 +10,7 @@ from .model_response import ModelResponse
 from .score import Score
 from .target import Target
 from .test_case import TestCase
+from .experiment import IterationResult, ExperimentConfig, ExperimentResult
 
 __all__ = [
     "AegisBaseModel",
@@ -23,4 +24,7 @@ __all__ = [
     "ModelResponse",
     "Evaluation",
     "Score",
+    "IterationResult",
+    "ExperimentConfig",
+    "ExperimentResult",
 ]
